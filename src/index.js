@@ -39,4 +39,29 @@ searchForm.addEventListener('submit', (e) => {
         })
     })
 });
+// слушаем клавиатуру чтобы закрывать окно модальное
+window.addEventListener('keydown', (e) => {
+    console.log(e.code);
+    if (e.code === 'Escape') {
+        modal.classList.add('is-hidden');
+        modalContent.innerHTML = '';
 
+    }
+});
+modal.addEventListener('click', (e) => {
+    console.log(e.target.id);
+    if (e.target.id === 'modal') {
+        modal.classList.add('is-hidden');
+        modalContent.innerHTML = '';
+    }
+});
+
+window.addEventListener('DOMContentLoaded', (e) => {
+    // вызывть шаблон countriesListTamplate передать ему массив arr , 
+    // сохранить в переменную items 
+    // полученную разметку из переменной items внутрь coutriesList
+    // преобразовать coutriesList в массив и повесить на каждый элемент слушатель по клику, 
+    // по текст контекту елемента делать фильтр массива, отфильтрованный массив передавать шаблону modalItemTamplate
+    // для отрисовки информации в модальном окне.
+    //  и ссылку вам) и в конце сделать npm run deploy;
+})
