@@ -1,4 +1,4 @@
- function getFetch(key,url, create, place) {
+ async function getFetch(key,url, create, place) {
     
     const options = { 
         method: 'GET',
@@ -6,15 +6,31 @@
             Authorization: key,
         },
     };
-    
-    fetch(url, options).then((response) => {
-        console.log(response);
-        return response.json();
-    }).then((data) => {
-        console.log(data);
-        const images = create(data.photos);
-        place.before(...images);
-    });
+     let response = await fetch(url, options);
+     let data = await response.json();
+     const images = create(data.photos);
+     place.before(...images);
 };
 
 export default getFetch;
+
+//  function getFetch(key,url, create, place) {
+    
+//     const options = { 
+//         method: 'GET',
+//         headers: {
+//             Authorization: key,
+//         },
+//     };
+    
+//     fetch(url, options).then((response) => {
+//         console.log(response);
+//         return response.json();
+//     }).then((data) => {
+//         console.log(data);
+//         const images = create(data.photos);
+//         place.before(...images);
+//     });
+// };
+
+// export default getFetch;
